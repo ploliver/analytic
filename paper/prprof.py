@@ -1,14 +1,13 @@
 # Plot a couple of pressure profiles
 
 import matplotlib.pyplot as plt
-from constants import *
+from synch_constants import *
 from solver import Evolve_RG
 import numpy as np
 
 from matplotlib import rc
 rc('font',**{'family':'serif','serif':['Times'],'size':14})
 rc('text', usetex=True)
-
 
 labels=['$\\beta$ model','Universal']
 colours=['blue','orange']
@@ -23,4 +22,4 @@ plt.xscale('log')
 plt.yscale('log')
 plt.legend(loc=0)
 plt.tight_layout()
-plt.savefig('prprof.pdf')
+plt.savefig('figures/paper/prprof.pdf')

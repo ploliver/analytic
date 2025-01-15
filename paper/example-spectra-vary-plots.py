@@ -1,7 +1,7 @@
 from solver import Evolve_RG
 import numpy as np
 import matplotlib.pyplot as plt
-from constants import *
+from synch_constants import *
 from matplotlib import rc
 
 rc('font',**{'family':'serif','serif':['Times'],'size':14})
@@ -39,4 +39,4 @@ for name,label in zip(['example-universal-noad','example-universal','example-uni
     plt.xlabel('Time (Myr)')
     plt.ylabel('Spectral index 150-330 MHz')
 
-plt.savefig('example-spectra-vary.pdf')
+plt.savefig('figures/paper/example-spectra-vary.pdf')

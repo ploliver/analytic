@@ -1,6 +1,6 @@
 # Plot a couple of pressure profiles
 
-from constants import *
+from synch_constants import *
 from solver import Evolve_RG
 import numpy as np
 import os.path

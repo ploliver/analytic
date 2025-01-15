@@ -13,3 +13,4 @@ m_e=9.109e-31 # kg
 sigma_T=6.652e-29 # m^2
 boltzmann=1.380658e-23 # J/K
 planck=6.6260755e-34 # J s
+ergpersec=1e-7 # W

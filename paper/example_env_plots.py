@@ -1,7 +1,7 @@
 from solver import Evolve_RG
 import numpy as np
 import matplotlib.pyplot as plt
-from constants import *
+from synch_constants import *
 from matplotlib import rc
 
 rc('font',**{'family':'serif','serif':['Times'],'size':14})
@@ -11,7 +11,7 @@ axes=[]
 naxes=4
 plt.figure(figsize=(12,9))
 for i in range(naxes):
-    axes.append(plt.subplot(naxes/2,naxes/2,i+1))
+    axes.append(plt.subplot(naxes//2,naxes//2,i+1))
 for ax in axes:
     ax.set_xscale('log')
 
@@ -44,9 +44,10 @@ for ax,l in zip(axes,axlabs):
     ax.set_xlim((tv[0]/Myr,tv[-1]/Myr))
     ax.set_xlabel('$t$ (Myr)')
     ax.set_ylabel(l)
+    ax.grid(linewidth=0.1)
 
-for i in [0,3]:
+for i in [0,3]: 
     axes[i].legend(loc=4,fontsize='small')
 #axes[2].plot([tv[0]/Myr,tv[-1]/Myr],[1,1],ls='--')
 plt.tight_layout()
-plt.savefig('example_env.pdf')
+plt.savefig('figures/paper/example_env.pdf')

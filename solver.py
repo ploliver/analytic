@@ -224,7 +224,7 @@ class Evolve_RG(object):
         return 0.10-(self.alpha_p+0.10)*(x/0.5)**3.0/(1.+(x/0.5)**3.0)
 
     def _kt_const(self,r):
-        return self.kt_const*r/r
+        return self.kt_const
 
     def _cs_const(self,r):
         return np.sqrt(self.Gamma_s*self._kt_const(r)/m0)
@@ -551,7 +551,7 @@ class Evolve_RG(object):
             # compute the thermal energy in the shocked shell
             N=self.ndict[(self.R[i],self.Rp[i])]
             # hack for the KE to not count shells expanding at sound speed
-            speed=self.cs*(np.array([self.m1[i],self.mp1[i]])-1)
+            speed=self.cs(self.R[i])*(np.array([self.m1[i],self.mp1[i]])-1)
             E = (1-self.xi)*self.Q*times[i] + (1.0/(self.Gamma_s-1))*N*self.kt_const - 0.5*N*m0*vcomb(speed,[self.R[i],self.Rp[i]])**2.0
             T = (self.Gamma_s-1)*(E/N)/boltzmann
             ns.append(N)
@@ -936,6 +936,7 @@ class Evolve_RG(object):
         if env_type=='beta':
             if temp_type=='isothermal':
                 self.kt_const=kwargs['kT']*1e3*eV
+                self.kt = self.kt_const  # Ensures a default isothermal assignment.
             elif temp_type=='two_temperature':
                 self.kt_inner=kwargs['kT_inner']*1e3*eV
                 self.kt_outer=kwargs['kT_outer']*1e3*eV

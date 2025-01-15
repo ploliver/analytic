@@ -1,7 +1,7 @@
 from solver import Evolve_RG
 import numpy as np
 import matplotlib.pyplot as plt
-from constants import *
+from synch_constants import *
 from matplotlib import rc
 import os.path
 
@@ -32,7 +32,7 @@ for i in range(2):
         plt.plot(tv/Myr,env.R/kpc,label='$\\beta = %.2f$ $r_c=%.1f$ kpc' % (env.beta,env.rc/kpc))
     if i==0: plt.plot(tv/Myr,tv*3e8/kpc,ls='--',color='cyan')
     plt.plot(tv/Myr,5*(tv/Myr)**0.6,ls='--',color='blue')
-    plt.plot(tv/Myr,tv*envs[-1].cs/kpc,ls='--',color='orange')
+    plt.plot(tv/Myr,tv*(envs[-1].cs/kpc),ls='--',color='orange')
     plt.xscale('log')
     plt.yscale('log')
     if i==0:
